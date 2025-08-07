@@ -1,0 +1,12 @@
+ultralytics
+opencv-python
+tqdm
+torch
+torchvision
+pandas
+matplotlib
+seaborn
+ipykernel
+deep_sort_realtime
+supervision
+scikit-learn

@@ -1,0 +1,13 @@
+train: train/images
+val: valid/images
+test: test/images
+
+nc: 7
+names: ['ball', 'bat', 'batsman', 'bowler', 'player', 'stumps', 'umpire']
+
+roboflow:
+  workspace: robo-computer-vision
+  project: cricket_object_detection-dzequ
+  version: 1
+  license: Private
+  url: https://app.roboflow.com/robo-computer-vision/cricket_object_detection-dzequ/1
