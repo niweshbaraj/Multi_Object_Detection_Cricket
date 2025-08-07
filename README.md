@@ -5,15 +5,8 @@ A computer vision system for detecting and tracking cricket objects in video foo
 ## Access Links
 
 **Google Drive**: [Dataset, Code, and Documentation](DRIVE_LINK)
-- Raw cricket videos and annotated dataset
-- Trained model weights (yolov8-cricket.pt)
-- Complete source code and outputs
-- Execution instructions and results
 
 **GitHub Repository**: [Project Source Code](GITHUB_REPO_LINK)
-- Complete project with version control
-- Documentation and setup instructions
-- Issue tracking and contributions
 
 ## Project Overview
 
@@ -94,8 +87,6 @@ Multi_Object_Detection_Cricket/
 │   ├── simple_evaluation.py # Lightweight model evaluation (GTX 1650)
 │   ├── extract_frames.py    # Frame extraction from videos (2 FPS)
 │   ├── quick_demo.py        # Fast demo on sample frames
-│   ├── test_external_video.py # Test on external cricket videos
-│   ├── download_test_videos.py # Download cricket videos for testing
 │   └── train.py            # Local training script (backup)
 ├── outputs/                 # Generated results directory
 │   ├── annotated_videos/    # Videos with object detection boxes
@@ -240,16 +231,17 @@ The cricket multi-object detection system successfully identifies and tracks key
 
 ## Data and Code Access
 
-**Google Drive**: [Dataset, Code, and Documentation](DRIVE_LINK_HERE)
+**Google Drive**: [Dataset, Code, and Documentation](DRIVE_LINK)
 Contains:
-- Raw cricket videos
-- Annotated dataset
-- Trained model weights
-- Complete source code
-- Execution instructions
+- Raw cricket videos and annotated dataset
+- Trained model weights (yolov8-cricket.pt)
+- Complete source code and outputs
+- Execution instructions and results
 
-**GitHub Repository**: [Project Source Code](GITHUB_REPO_LINK_HERE)
-Complete project repository with version control and documentation.
+**GitHub Repository**: [Project Source Code](GITHUB_REPO_LINK)
+- Complete project with version control
+- Documentation and setup instructions
+- Issue tracking and contributions
 
 ## Libraries Used and Their Significance
 
@@ -384,142 +376,3 @@ Validated across different GPU configurations:
 - 4GB+ RAM
 - OpenCV, PyTorch, Ultralytics YOLOv8
 - 2GB+ storage for model and outputs
-
-## Testing on External Cricket Videos
-
-### Getting Test Videos
-To validate the model's real-world performance, test on cricket videos NOT in your training dataset:
-
-#### **Free Cricket Video Sources:**
-1. **YouTube Cricket Highlights**:
-   - Search: "cricket highlights", "cricket match", "cricket live action"
-   - Download using: `yt-dlp` or online YouTube downloaders
-   - Recommended channels: ICC, ESPN Cricinfo, official cricket boards
-
-2. **Creative Commons Cricket Videos**:
-   - [Internet Archive](https://archive.org) - Search "cricket match"
-   - [Wikimedia Commons](https://commons.wikimedia.org) - Cricket video category
-   - [Pexels](https://pexels.com) and [Pixabay](https://pixabay.com) - Free cricket footage
-
-3. **Sample Test Videos**:
-   - Different camera angles (close-up, wide-angle, aerial)
-   - Various lighting conditions (day, night matches)
-   - Different cricket formats (Test, ODI, T20)
-
-#### **Video Requirements for Testing:**
-- **Format**: MP4, AVI, MOV (OpenCV compatible)
-- **Resolution**: 720p or higher recommended
-- **Duration**: 30 seconds to 5 minutes (for quick testing)
-- **Content**: Clear visibility of players, ball, stumps
-
-### Testing Process
-
-#### **1. Quick Demo Test (Recommended Start)**
-```bash
-# Test on new video with sample frames
-python src/quick_demo.py
-
-# Modify the script to accept custom video:
-# python src/quick_demo.py --video path/to/your/test_video.mp4
-```
-
-#### **2. Full Video Processing**
-```bash
-# Process entire test video
-python src/detect_annotate.py --input path/to/test_video.mp4 --output outputs/test_results/
-```
-
-#### **3. Custom Test Script**
-Create a simple test script for external videos:
-```python
-# test_external_video.py
-from ultralytics import YOLO
-import cv2
-
-def test_cricket_video(video_path):
-    model = YOLO('models/yolov8-cricket.pt')
-    cap = cv2.VideoCapture(video_path)
-    
-    frame_count = 0
-    total_detections = 0
-    
-    while cap.isOpened():
-        ret, frame = cap.read()
-        if not ret:
-            break
-            
-        results = model(frame, conf=0.3)
-        detections = len(results[0].boxes) if results[0].boxes else 0
-        total_detections += detections
-        frame_count += 1
-        
-        if frame_count % 30 == 0:  # Every 30 frames
-            print(f"Frame {frame_count}: {detections} objects detected")
-    
-    print(f"Total: {total_detections} detections in {frame_count} frames")
-    cap.release()
-
-# Usage: test_cricket_video("path/to/external_video.mp4")
-```
-
-### Expected Performance on External Videos
-
-#### **What to Expect:**
-- **Players**: 80-90% detection accuracy
-- **Ball**: 15-25% (challenging due to motion blur)
-- **Stumps**: 60-70% (depends on camera angle)
-- **Equipment**: 40-60% (bats, boundary markers)
-
-#### **Performance Factors:**
-- **Camera Quality**: HD videos perform better
-- **Lighting**: Daylight matches show higher accuracy
-- **Camera Angle**: Front-facing cameras work best
-- **Video Compression**: Less compressed videos yield better results
-
-### Validation Metrics for External Testing
-
-#### **1. Detection Rate Analysis**
-- Objects detected per frame
-- Consistency across different scenes
-- False positive/negative rates
-
-#### **2. Visual Quality Assessment**
-- Bounding box accuracy
-- Confidence score distribution
-- Class prediction correctness
-
-#### **3. Robustness Testing**
-- Performance across different stadiums
-- Various weather conditions
-- Different broadcast styles
-
-### Example Testing Workflow
-
-```bash
-# 1. Download test video (example using yt-dlp)
-yt-dlp "https://youtube.com/watch?v=CRICKET_VIDEO_ID" -o "test_videos/%(title)s.%(ext)s"
-
-# 2. Quick frame-based test
-python src/quick_demo.py  # Modify to accept custom input
-
-# 3. Full video processing
-python src/detect_annotate.py  # Process entire video
-
-# 4. Generate performance metrics
-python src/simple_evaluation.py  # Compare with validation performance
-```
-
-### Recommended Test Video Characteristics
-
-#### **Optimal Test Conditions:**
-- **Duration**: 1-3 minutes
-- **Format**: Recent cricket matches (2020+)
-- **Quality**: 720p minimum, 1080p preferred
-- **Angles**: Front-view preferred, side-view acceptable
-- **Action**: Include batting, bowling, and fielding
-
-#### **Challenging Test Scenarios:**
-- Night matches with floodlights
-- Rain-affected matches
-- Close-up player shots
-- Fast-paced T20 action sequences
