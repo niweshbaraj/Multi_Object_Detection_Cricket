@@ -49,7 +49,6 @@ venv.bak/
 Thumbs.db
 
 # Project specific
-outputs/
 runs/
 test_videos/
 data/front view/
@@ -61,12 +60,23 @@ data/front view/.gitkeep
 data/side view batsman/.gitkeep  
 data/side view bowler/.gitkeep
 
-# Large files
+# Large video files (but keep other outputs)
 *.mp4
 *.avi
 *.mov
 *.mkv
 *.wmv
+outputs/**/*.mp4
+outputs/**/*.avi
+outputs/**/*.mov
+outputs/**/*.mkv
+outputs/**/*.wmv
+
+# Keep non-video outputs
+!outputs/demo_frames/
+!outputs/heatmaps/
+!outputs/model_evaluation/
+!outputs/stats/
 
 # Model files (except the main trained model)
 yolov8*.pt
