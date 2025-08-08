@@ -8,6 +8,40 @@ A computer vision system for detecting and tracking cricket objects in video foo
 
 **🐙 GitHub Repository**: [Multi_Object_Detection_Cricket](https://github.com/niweshbaraj/Multi_Object_Detection_Cricket) - Source code and documentation
 
+## 🎬 Demo Results
+
+### 📸 Detection Examples
+Sample frames showing the model's performance on cricket videos with color-coded bounding boxes:
+
+<div align="center">
+
+| Frame 1 | Frame 2 |
+|---------|---------|
+| ![Detection Frame 1](outputs/demo_frames/frame_0000_detections.jpg) | ![Detection Frame 2](outputs/demo_frames/frame_0050_detections.jpg) |
+| Early game detection | Active play detection |
+
+| Frame 3 | Frame 4 |
+|---------|---------|
+| ![Detection Frame 3](outputs/demo_frames/frame_0100_detections.jpg) | ![Detection Frame 4](outputs/demo_frames/frame_0150_detections.jpg) |
+| Multi-player scene | Bowling action captured |
+
+</div>
+
+### 📹 Video Demonstrations
+
+**🎬 Live Demo GIFs**:
+
+![Cricket Detection Demo 1](outputs/demo_gifs/cricket_detection_demo1.gif)
+*Recent gameplay with multi-object detection - comprehensive scene analysis*
+
+![Cricket Detection Demo 2](outputs/demo_gifs/cricket_detection_demo2.gif)
+*Front view with ball tracking - optimal detection angle*
+
+![Cricket Detection Demo 3](outputs/demo_gifs/cricket_detection_demo3.gif)
+*Side view batsman perspective - specialized player analysis*
+
+> **🎥 Complete Video Collection**: Full annotated and tracked videos are available in the [Google Drive outputs folder](https://drive.google.com/drive/folders/1niKqtmu6GFm7pT8A8P9YQ6mbHgGtbHOL?usp=sharing)
+
 ## 🎯 Project Overview
 
 This project implements multi-object detection and tracking for cricket videos, identifying and analyzing key cricket elements:
@@ -17,6 +51,14 @@ This project implements multi-object detection and tracking for cricket videos, 
 - 👨‍⚖️ Umpire 
 - 🎯 Stumps
 - 🏏 Cricket Bat
+
+### 🎯 Detection Features
+- **Color-coded bounding boxes** for different object classes
+- **Confidence scores** displayed for each detection
+- **Real-time processing** at approximately 2 FPS
+- **Multi-camera angle support** (front view, side view perspectives)
+
+> **Color Legend**: 🟢 Ball (Green) | 🩵 Bat (Cyan) | 🔵 Batsman (Blue) | 🔴 Bowler (Red) | 🟣 Player (Purple) | 🔵 Stumps (Light Blue) | 🟡 Umpire (Yellow)
 
 ## 📊 Dataset Preparation Process
 
@@ -189,7 +231,24 @@ Model performance analysis files:
 - 🎯 `class_performance.csv` - Per-class accuracy scores
 - 📊 `class_performance.png` - Visual performance comparison
 
-## 🏆 Results and Findings
+## �🏆 Results and Findings
+
+### 🗺️ Movement Analytics
+Position heatmaps showing player movement patterns and ball trajectory:
+
+<div align="center">
+
+| Ball Trajectory | Player Movements |
+|----------------|------------------|
+| ![Ball Heatmap](outputs/heatmaps/ball_heatmap.png) | ![Batsman Heatmap](outputs/heatmaps/batsman_heatmap.png) |
+| Ball movement patterns | Batsman positioning |
+
+| Bowling Analysis | Umpire Position |
+|------------------|-----------------|
+| ![Bowler Heatmap](outputs/heatmaps/bowler_heatmap.png) | ![Umpire Heatmap](outputs/heatmaps/umpire_heatmap.png) |
+| Bowler positioning patterns | Umpire location analysis |
+
+</div>
 
 ### 📈 Model Performance
 - 🎯 **Overall mAP@50**: 89.6%

@@ -44,13 +44,13 @@ def annotate_video(video_path, output_path, model_path='models/yolov8-cricket.pt
     
     # Define colors for each object class
     class_colors = {
-        'ball': (0, 255, 0),      # Green
-        'bat': (255, 255, 0),     # Yellow
-        'batsman': (255, 0, 0),   # Red  
-        'bowler': (0, 0, 255),    # Blue
-        'player': (128, 0, 128),  # Purple
-        'stumps': (255, 165, 0),  # Orange
-        'umpire': (0, 255, 255)   # Cyan
+        'ball': (0, 255, 0),        # Green
+        'bat': (0, 255, 255),       # Cyan
+        'batsman': (0, 0, 255),     # Blue  
+        'bowler': (255, 0, 0),      # Red
+        'player': (128, 0, 128),    # Purple
+        'stumps': (235, 206, 135),  # Light Blue (Sky Blue)
+        'umpire': (255, 255, 0)     # Yellow
     }
     
     while True:

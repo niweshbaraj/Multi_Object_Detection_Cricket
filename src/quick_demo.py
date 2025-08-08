@@ -71,9 +71,9 @@ def demo_detection_on_frames(video_path, model_path='models/yolov8-cricket.pt', 
         if frame_detections:
             # Draw bounding boxes (same as main script)
             class_colors = {
-                'ball': (0, 255, 0), 'bat': (255, 255, 0), 'batsman': (255, 0, 0),
-                'bowler': (0, 0, 255), 'player': (128, 0, 128), 'stumps': (255, 165, 0),
-                'umpire': (0, 255, 255)
+                'ball': (0, 255, 0), 'bat': (0, 255, 255), 'batsman': (0, 0, 255),
+                'bowler': (255, 0, 0), 'player': (128, 0, 128), 'stumps': (235, 206, 135),
+                'umpire': (255, 255, 0)
             }
             
             for box in results[0].boxes:
